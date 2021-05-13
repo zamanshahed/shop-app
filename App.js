@@ -19,8 +19,7 @@ export default function App() {
         <Card>
           <ImageBackground
             source={{
-              uri:
-                "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/04/amazfit-bip-1922309.jpg?itok=gK-S_ziw",
+              uri: "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/04/amazfit-bip-1922309.jpg?itok=gK-S_ziw",
             }}
             style={styles.bgImage}
           >
@@ -41,8 +40,7 @@ export default function App() {
         <Card>
           <ImageBackground
             source={{
-              uri:
-                "http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/10/Peregrine_Hero_02_Retail.jpg",
+              uri: "http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/10/Peregrine_Hero_02_Retail.jpg",
             }}
             style={styles.bgImage}
           >
@@ -63,8 +61,7 @@ export default function App() {
         <Card>
           <ImageBackground
             source={{
-              uri:
-                "https://d1lss44hh2trtw.cloudfront.net/assets/article/2020/09/01/nvidia-bfgpu-3090-revealed1_feature.jpg",
+              uri: "https://d1lss44hh2trtw.cloudfront.net/assets/article/2020/09/01/nvidia-bfgpu-3090-revealed1_feature.jpg",
             }}
             style={styles.bgImage}
           >
@@ -90,7 +87,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#DAE0E2",
+    marginTop: 15,
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
