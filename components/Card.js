@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 1 },
     shadowRadius: 15,
     elevation: 5,
-    marginVertical: 15,
+    marginVertical: 11,
   },
 });
 

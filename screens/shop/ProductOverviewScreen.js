@@ -1,14 +1,23 @@
 import React from "react";
 import { FlatList, Text } from "react-native";
-import { State } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
+
+import ProductItems from "../../components/shop/ProductItems";
 
 const ProductOverviewScreen = (props) => {
   const products = useSelector((state) => state.products.availableProducts);
   return (
     <FlatList
       data={products}
-      renderItem={(itemData) => <Text>{itemData.item.title}</Text>}
+      renderItem={(itemData) => (
+        <ProductItems
+          imageUrl={itemData.item.imageUrl}
+          title={itemData.item.title}
+          price={itemData.item.price}
+          onViewDetails={() => {}}
+          onAddToCart={() => {}}
+        />
+      )}
     />
   );
 };
