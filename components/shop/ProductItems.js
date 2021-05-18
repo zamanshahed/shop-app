@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  ImageBackground,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground } from "react-native";
 
 import Card from "../Card";
 import Colors from "../../constants/Colors";
