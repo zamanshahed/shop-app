@@ -22,7 +22,7 @@ const storeRedux = createStore(roodReducer);
 export default function App() {
   return (
     <Provider store={storeRedux}>
-      <View></View>
+      <View>...</View>
     </Provider>
   );
 }

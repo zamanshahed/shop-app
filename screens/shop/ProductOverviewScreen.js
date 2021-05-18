@@ -1,8 +1,16 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, Text } from "react-native";
+import { State } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
 
 const ProductOverviewScreen = (props) => {
-  return <FlatList />;
+  const products = useSelector((state) => state.products.availableProducts);
+  return (
+    <FlatList
+      data={products}
+      renderItem={(itemData) => <Text>{itemData.item.title}</Text>}
+    />
+  );
 };
 
 export default ProductOverviewScreen;
