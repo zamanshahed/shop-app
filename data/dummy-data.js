@@ -4,7 +4,7 @@ const PRODUCTS = [
   new Product(
     "p1",
     "u1",
-    "Smart Watch",
+    "Amazfit Bip",
     "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2020/04/amazfit-bip-1922309.jpg?itok=gK-S_ziw",
     "A new way of getting smarter daily, with your favourite gadget!",
     59.99
@@ -36,16 +36,16 @@ const PRODUCTS = [
   new Product(
     "p5",
     "u3",
-    "PowerBook",
-    "https://get.pxhere.com/photo/laptop-computer-macbook-mac-screen-water-board-keyboard-technology-air-mouse-photo-airport-aircraft-tablet-aviation-office-black-monitor-keys-graphic-hardware-image-pc-exhibition-multimedia-calculator-vector-water-cooling-floppy-disk-phased-out-desktop-computer-netbook-personal-computer-computer-monitor-electronic-device-computer-hardware-display-device-448748.jpg",
+    "MacBook Pro",
+    "https://cdn.wccftech.com/wp-content/uploads/2019/07/MacBook-Pro-redesign.jpg",
     "Awesome hardware, crappy keyboard and a hefty price. Buy now before a new one is released!",
-    2299.99
+    2599.79
   ),
   new Product(
     "p6",
     "u1",
     "Xbox Series X",
-    "https://i5.walmartimages.com/asr/6f53b136-b9fa-42de-867b-bab2be88f6c3.56323a3aa9c61de5c1b1866a5c60286a.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
+    "https://cdn.gamer-network.net/2019/usgamer/Xbox-Series-X-Shot-06.jpg/EG11/thumbnail/1920x1080/format/jpg/quality/75/how-xbox-series-x-got-its-name-what-its-new-specs-are-and-more.jpg",
     "Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case",
     989.49
   ),

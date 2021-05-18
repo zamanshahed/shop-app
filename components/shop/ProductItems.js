@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#fff",
     fontWeight: "bold",
-    backgroundColor: "#47535E",
+    backgroundColor: Colors.theme,
   },
   btnStyle: {
     width: 95,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   productContainer: {
     flexDirection: "row",
     height: 41,
-    backgroundColor: "#47535E",
+    backgroundColor: Colors.theme,
     justifyContent: "space-between",
     alignItems: "center",
   },

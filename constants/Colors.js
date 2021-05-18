@@ -4,4 +4,5 @@ export default {
   btnSecondary: "#10A881",
   accent: "#FFC107",
   price: "#ffeaa7",
+  theme: "#47535E",
 };
