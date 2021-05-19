@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Button,
+  ScrollView,
+} from "react-native";
 import { useSelector } from "react-redux";
 
 import Colors from "../../constants/Colors";
@@ -11,27 +18,19 @@ const ProductDetailsScreen = (props) => {
   );
 
   return (
-    <View>
-      <View>
-        <Image
-          style={styles.imageStyle}
-          source={{ uri: selectedProduct.imageUrl }}
-        />
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>{selectedProduct.title}</Text>
-          <Text style={styles.priceText}>$ {selectedProduct.price}</Text>
-        </View>
+    <ScrollView>
+      <Image
+        style={styles.imageStyle}
+        source={{ uri: selectedProduct.imageUrl }}
+      />
+      <Text style={styles.priceText}>$ {selectedProduct.price}</Text>
 
-        <View>
-          <Button color={Colors.btnSecondary} title="Add to Cart" />
-        </View>
+      <View>
+        <Button color={Colors.btnSecondary} title="Add to Cart" />
       </View>
-      <View style={styles.descriptionStyle}>
-        <Text style={styles.descriptionText}>
-          {selectedProduct.description}
-        </Text>
-      </View>
-    </View>
+
+      <Text style={styles.descriptionText}>{selectedProduct.description}</Text>
+    </ScrollView>
   );
 };
 
@@ -44,7 +43,7 @@ ProductDetailsScreen.navigationOptions = (navData) => {
 const styles = StyleSheet.create({
   imageStyle: {
     width: "100%",
-    height: "65%",
+    height: 250,
   },
   titleText: {
     fontSize: 28,
@@ -53,10 +52,13 @@ const styles = StyleSheet.create({
     padding: 1,
   },
   priceText: {
+    backgroundColor: Colors.theme,
     fontSize: 24,
-    color: Colors.price,
+    textAlign: "center",
+    color: "#fff",
     fontWeight: "bold",
-    padding: 4,
+    height: 40,
+    padding: 5,
   },
   titleContainer: {
     height: 37,
@@ -66,10 +68,13 @@ const styles = StyleSheet.create({
   },
   descriptionStyle: {
     marginTop: "-11%",
+    textAlign: "center",
     paddingHorizontal: 11,
   },
   descriptionText: {
-    fontSize: 15,
+    fontSize: 18,
+    textAlign: "center",
+    padding: 5,
   },
 });
 

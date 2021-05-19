@@ -46,7 +46,7 @@ const PRODUCTS = [
     "u1",
     "Xbox Series X",
     "https://cdn.gamer-network.net/2019/usgamer/Xbox-Series-X-Shot-06.jpg/EG11/thumbnail/1920x1080/format/jpg/quality/75/how-xbox-series-x-got-its-name-what-its-new-specs-are-and-more.jpg",
-    "Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case",
+    "Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.",
     989.49
   ),
 ];
