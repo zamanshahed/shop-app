@@ -38,7 +38,7 @@ const PRODUCTS = [
     "u3",
     "MacBook Pro",
     "https://cdn.wccftech.com/wp-content/uploads/2019/07/MacBook-Pro-redesign.jpg",
-    "Awesome hardware, crappy keyboard and a hefty price. Buy now before a new one is released!",
+    "Designed for those who defy limits and change the world, the 16-inch MacBook Pro is by far the most powerful notebook we have ever made. With an immersive Retina display, superfast processors, advanced graphics, the largest battery capacity ever in a MacBook Pro, Magic Keyboard, and massive storage, it's the ultimate pro notebook for the ultimate user.",
     2599.79
   ),
   new Product(
