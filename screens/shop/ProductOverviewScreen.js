@@ -43,13 +43,21 @@ const ProductOverviewScreen = (props) => {
   );
 };
 
-ProductOverviewScreen.navigationOptions = {
-  headerTitle: "All Products",
-  headerRight: () => (
-    <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
-      <Item title="Cart" iconName="md-cart" onPress={() => {}} />
-    </HeaderButtons>
-  ),
+ProductOverviewScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "All Products",
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
+        <Item
+          title="Cart"
+          iconName="md-cart"
+          onPress={() => {
+            navData.navigation.navigate("Cart");
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default ProductOverviewScreen;

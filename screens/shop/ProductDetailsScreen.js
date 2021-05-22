@@ -28,9 +28,9 @@ const ProductDetailsScreen = (props) => {
         style={styles.imageStyle}
         source={{ uri: selectedProduct.imageUrl }}
       />
-      <Text style={styles.priceText}>$ {selectedProduct.price}</Text>
 
-      <View>
+      <View style={styles.summery}>
+        <Text style={styles.priceText}>$ {selectedProduct.price}</Text>
         <Button
           color={Colors.btnSecondary}
           title="Add to Cart"
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     padding: 1,
   },
   priceText: {
+    color: Colors.price,
     backgroundColor: Colors.theme,
     fontSize: 24,
     textAlign: "center",
@@ -92,6 +93,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     padding: 5,
+  },
+  summery: {
+    backgroundColor: Colors.theme,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 12,
+    alignItems: "center",
+    color: Colors.price,
   },
 });
 
