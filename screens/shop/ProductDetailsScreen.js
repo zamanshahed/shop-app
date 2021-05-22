@@ -8,9 +8,11 @@ import {
   ScrollView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import Colors from "../../constants/Colors";
 import * as cartActions from "../../store-redux/actions/Cart";
+import MyHeaderButton from "../../components/UI/MyHeaderButton";
 
 const ProductDetailsScreen = (props) => {
   const productId = props.navigation.getParam("productId");
@@ -46,6 +48,11 @@ const ProductDetailsScreen = (props) => {
 ProductDetailsScreen.navigationOptions = (navData) => {
   return {
     headerTitle: navData.navigation.getParam("productTitle"),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
+        <Item title="Cart" iconName="md-cart" onPress={() => {}} />
+      </HeaderButtons>
+    ),
   };
 };
 
