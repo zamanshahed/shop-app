@@ -11,9 +11,11 @@ import {
 
 import productReducer from "./store-redux/reducers/products";
 import ShopNavigator from "./navigation/ShopNavigator";
+import cartReducer from "./store-redux/reducers/Cart";
 
 const roodReducer = combineReducers({
   products: productReducer,
+  cart: cartReducer,
 });
 
 const storeRedux = createStore(roodReducer);
