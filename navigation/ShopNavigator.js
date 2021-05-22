@@ -16,6 +16,10 @@ const ProductsNavigator = createStackNavigator(
       headerStyle: {
         backgroundColor: Colors.primary,
       },
+      headerTitleStyle: {
+        fontFamily: "BellotaText_700Bold",
+        textAlign: "center",
+      },
       headerTintColor: "white",
     },
   }

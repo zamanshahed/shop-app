@@ -21,15 +21,15 @@ const PRODUCTS = [
     "p3",
     "u2",
     "Nest Mini (2nd Gen) ",
-    "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6348/6348883cv12d.jpg",
-    "Meet the 2nd generation Nest Mini, the smart speaker you control with your voice. Just say 'Hey Google' to play songs from Spotify, YouTube Music, and more.¹ Music sounds bigger and richer. Ask your Google Assistant about the weather, news, or almost anything. Hear your personalized schedule, current weather conditions, and reminders.² Set timers and alarms. And control your compatible smart devices.³!",
+    "https://static.toiimg.com/photo/72279324.cms",
+    "Meet the 2nd generation Nest Mini, the smart speaker you control with your voice. Just say 'Hey Google' to play songs from Spotify, YouTube Music, and more.¹ Music sounds bigger and richer. Ask your Google Assistant about the weather, news, or almost anything. Hear your personalized schedule, current weather conditions, and reminders.² Set timers and alarms. And control your compatible smart devices.",
     45.99
   ),
   new Product(
     "p4",
     "u3",
     "Bose - Sport Earbuds",
-    "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6419/6419302_sd.jpg;maxHeight=640;maxWidth=550",
+    "https://www.techandroids.com/wp-content/uploads/2017/09/Bose-SoundSport-Free-Truly-Wireless-earbuds-image-5.jpg",
     "Bose Sport Earbuds are true wireless earbuds engineered to produce clear and balanced sound in any listening environment. StayHear Max tips mold to your ears with soft silicone and won’t fall out, no matter how demanding your workout is. Bose Sport Earbuds go through rigorous quality testing for durability and they’re rated IPX4 - designed to resist moisture from sweat and weather. And instead of buttons, a capacitive touch interface lets you simply tap to play or pause music, answer calls, and more. With a battery life of up to five hours get ready to beat your personal best, again and again.",
     179.49
   ),

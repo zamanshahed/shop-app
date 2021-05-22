@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
   },
   descriptionText: {
+    fontFamily: "Comfortaa_400Regular",
     fontSize: 18,
     textAlign: "center",
     padding: 5,

@@ -55,11 +55,12 @@ const styles = StyleSheet.create({
     fontSize: 23,
     textAlign: "center",
     color: "#fff",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     backgroundColor: Colors.theme,
+    fontFamily: "BellotaText_700Bold",
   },
   btnStyle: {
-    width: 95,
+    width: 110,
     borderRadius: 12,
     overflow: "hidden",
     padding: 12,
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     textTransform: "uppercase",
+    fontFamily: "Aldrich_400Regular",
   },
 });
 
