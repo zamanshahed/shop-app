@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../actions/Cart";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/Cart";
 import CartItem from "../../models/cart-item";
 
 const initialState = {
@@ -35,6 +35,29 @@ export default (state = initialState, action) => {
           totalPayment: state.totalPayment + prodPrice,
         };
       }
+    case REMOVE_FROM_CART:
+      const currentQty = state.items[action.pid].quantity;
+      const currentPrice = state.items[action.pid].productPrice;
+
+      let updatedCartItems;
+
+      if (currentQty > 1) {
+        const updatedCartItem = new CartItem(
+          currentQty - 1,
+          state.items[action.pid].productPrice,
+          state.items[action.pid].productTitle,
+          state.items[action.pid].totalPrice - currentPrice
+        );
+        updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
+      } else {
+        updatedCartItems = { ...state.items };
+        delete updatedCartItems[action.pid];
+      }
+      return {
+        ...state,
+        items: updatedCartItems,
+        totalPayment: state.totalPayment - currentPrice,
+      };
   }
 
   return state;
