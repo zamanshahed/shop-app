@@ -37,6 +37,7 @@ const CartScreen = (props) => {
       </View>
 
       <FlatList
+        style={styles.listStyle}
         data={cartItems}
         keyExtractor={(item) => item.productId}
         renderItem={(itemData) => (
@@ -58,7 +59,8 @@ const styles = StyleSheet.create({
   },
   summery: {
     backgroundColor: Colors.theme,
-    marginBottom: 6,
+    marginTop: 14,
+    marginBottom: 16,
     flexDirection: "row",
     justifyContent: "space-between",
     borderColor: Colors.theme,
@@ -81,6 +83,11 @@ const styles = StyleSheet.create({
   },
   totalPayment: {
     color: Colors.price,
+  },
+  listStyle: {
+    borderColor: Colors.theme,
+    // borderWidth: 2,
+    borderRadius: 8,
   },
 });
 

@@ -49,6 +49,30 @@ const PRODUCTS = [
     "Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.    Explore rich new worlds and enjoy the action like never before with the unmatched 12 Teraflops of raw graphic processing power. Enjoy 4K gaming at up to 120 frames per second, advanced 3D spatial sound, and more.2020 New X Gaming Console Bundle - 1TB SSD Black Xbox with Xbox Controller Case.",
     989.49
   ),
+  new Product(
+    "p7",
+    "u3",
+    "Go Pro Hero 9",
+    "https://1.bp.blogspot.com/-frKBtdAdg1Q/X2RTHUeTBhI/AAAAAAAAFyk/pVcl5t9vBdkakhG9OX8XqeXEd9wo8wM0gCLcBGAsYHQ/s1024/IMG_20200918_115555.jpg",
+    "Shoot stunning 5K video that maintains serious detail even when zooming in and capturing 14.7MP frame grabs. Also records in 4K, 2.7K, 1440p and 1080p.",
+    349.89
+  ),
+  new Product(
+    "p8",
+    "u2",
+    "DJI Mavic 2 Zoom Entireprice",
+    "https://i0.wp.com/flyhighusa.com/wp-content/uploads/2018/10/dims.jpg?fit=1600%2C1067&ssl=1",
+    "DJI Innovations Mavic 2 Zoom has been discontinued by DJI Innovations and is no longer available. Our product experts have helped us select these available replacements below.You can also explore other items in the Drones & Accessories yourself to try and find the perfect replacement for you!",
+    1389.29
+  ),
+  new Product(
+    "p9",
+    "u2",
+    "Beats by Dr Dre",
+    "https://wirelessheadphones.com/wp-content/uploads/2017/10/ColorWare-Collection-Illusion.jpg",
+    "For a limited time, ColorWare is offering Beats by Dre Studio headphones with an iridescent finish.  Depending on the viewing angle, this unique, iridescent paint has a dramatic color changing effect, even in low-light environments. ColorWare offers three different color shifting paint finishes including: Blue to Red-color shifts from blue to warm red, purple and copper Red to Gold-color shifts from red to orange, gold and slights hints of maroon Gold to Silver-color shifts from gold to radiant, yet icy, silvery blue and green The Illusion Beats by Dre headphones are $1000 and include an embroidered, black Ultrasuede carrying case. The headphones will ship in two to three weeks.",
+    995.49
+  ),
 ];
 
 export default PRODUCTS;
