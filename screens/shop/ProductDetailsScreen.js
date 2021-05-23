@@ -24,10 +24,12 @@ const ProductDetailsScreen = (props) => {
 
   return (
     <ScrollView>
-      <Image
-        style={styles.imageStyle}
-        source={{ uri: selectedProduct.imageUrl }}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.imageStyle}
+          source={{ uri: selectedProduct.imageUrl }}
+        />
+      </View>
 
       <View style={styles.summery}>
         <Text style={styles.priceText}>$ {selectedProduct.price}</Text>
@@ -60,13 +62,12 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: "100%",
     height: 250,
+    borderRadius: 12,
+
+    borderColor: Colors.theme,
+    borderWidth: 3,
   },
-  titleText: {
-    fontSize: 28,
-    color: "#fff",
-    fontWeight: "bold",
-    padding: 1,
-  },
+
   priceText: {
     color: Colors.price,
     backgroundColor: Colors.theme,
@@ -98,9 +99,26 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.theme,
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 12,
+    paddingHorizontal: 9,
+    paddingVertical: 5,
     alignItems: "center",
     color: Colors.price,
+    shadowColor: "black",
+    shadowOpacity: 5,
+    shadowOffset: { width: 2, height: 1 },
+    shadowRadius: 15,
+    elevation: 5,
+    borderRadius: 8,
+    marginHorizontal: 5,
+  },
+  imageContainer: {
+    margin: 12,
+  },
+  btnStyle: {
+    width: 310,
+    borderRadius: 12,
+    overflow: "hidden",
+    padding: 10,
   },
 });
 

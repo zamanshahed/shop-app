@@ -16,7 +16,7 @@ const ProductsNavigator = createStackNavigator(
     //   navigator config:
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.theme,
       },
       headerTitleStyle: {
         fontFamily: "BellotaText_700Bold",
