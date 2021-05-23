@@ -52,7 +52,13 @@ ProductDetailsScreen.navigationOptions = (navData) => {
     headerTitle: navData.navigation.getParam("productTitle"),
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
-        <Item title="Cart" iconName="md-cart" onPress={() => {}} />
+        <Item
+          title="Cart"
+          iconName="md-cart"
+          onPress={() => {
+            navData.navigation.navigate("Cart");
+          }}
+        />
       </HeaderButtons>
     ),
   };
