@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: "100%",
     height: 250,
-    borderRadius: 12,
-
+    borderRadius: 10,
+    // paddingVertical: 14,
     borderColor: Colors.theme,
     borderWidth: 3,
   },
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   imageContainer: {
-    margin: 12,
+    margin: 4,
   },
   btnStyle: {
     width: 310,

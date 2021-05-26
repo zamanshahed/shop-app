@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../constants/Colors";
 import CartItem from "../../components/shop/CartItem";
 import * as cartActions from "../../store-redux/actions/Cart";
+import * as orderActions from "../../store-redux/actions/Order";
 
 const CartScreen = (props) => {
   const cartTotalOrder = useSelector((state) => state.cart.totalPayment);
@@ -38,6 +39,9 @@ const CartScreen = (props) => {
           title="Confirm Order"
           color={Colors.btnSecondary}
           disabled={cartItems.length === 0}
+          onPress={() => {
+            dispatch(orderActions.addOrder(cartItems, cartTotalOrder));
+          }}
         />
       </View>
 

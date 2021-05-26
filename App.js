@@ -12,38 +12,17 @@ import {
 import productReducer from "./store-redux/reducers/products";
 import ShopNavigator from "./navigation/ShopNavigator";
 import cartReducer from "./store-redux/reducers/Cart";
+import orderReducer from "./store-redux/reducers/Order";
 
 const roodReducer = combineReducers({
   products: productReducer,
   cart: cartReducer,
+  orders: orderReducer,
 });
 
 const storeRedux = createStore(roodReducer);
 
-//custom font handler
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//     Assistant: require("./assets/fonts/Assistant-VariableFont_wght.ttf"),
-//     Comforta: require("./assets/fonts/Comfortaa-VariableFont_wght.ttf"),
-//     Koho: require("./assets/fonts/KoHo-Light.ttf"),
-//     Varta: require("./assets/fonts/Varta-VariableFont_wght.ttf"),
-//   });
-// };
-
 export default function App() {
-  // const [fontLoaded, setFontLoaded] = useState(false);
-
-  // if (!fontLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={fetchFonts}
-  //       onFinish={() => {
-  //         setFontLoaded(true);
-  //       }}
-  //       onError={(err) => console.log(err)}
-  //     />
-  //   );
-  // }
   let [fontsLoaded] = useFonts({
     BellotaText_700Bold,
     Comfortaa_400Regular,
