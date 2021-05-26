@@ -1,6 +1,8 @@
+import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
+import { Ionicons } from "@expo/vector-icons";
 
 import ProductOverviewScreen from "../screens/shop/ProductOverviewScreen";
 import ProductDetailsScreen from "../screens/shop/ProductDetailsScreen";
@@ -27,6 +29,11 @@ const ProductsNavigator = createStackNavigator(
   },
   {
     //   navigator config:
+    navigationOptions: {
+      drawerIcon: (drawerConfig) => (
+        <Ionicons name="ios-cart" size={25} color={drawerConfig.tintColor} />
+      ),
+    },
     defaultNavigationOptions: mainNavConfig,
   }
 );
@@ -36,6 +43,11 @@ const OrderNavigator = createStackNavigator(
     orders: OrderScreen,
   },
   {
+    navigationOptions: {
+      drawerIcon: (drawerConfig) => (
+        <Ionicons name="ios-list" size={25} color={drawerConfig.tintColor} />
+      ),
+    },
     defaultNavigationOptions: mainNavConfig,
   }
 );
@@ -46,8 +58,15 @@ const sideDrawerNav = createDrawerNavigator(
     Orders: OrderNavigator,
   },
   {
+    // hideStatusBar: true,
+    drawerBackgroundColor: Colors.theme,
+    drawerType: "slide",
     contentOptions: {
-      activeTintColor: Colors.theme,
+      activeTintColor: Colors.price,
+      inactiveTintColor: "#fff",
+      itemsContainerStyle: {
+        marginTop: "10%",
+      },
     },
   }
 );
