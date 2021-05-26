@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Button } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
+import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
 import CartItem from "../../components/shop/CartItem";
 import * as cartActions from "../../store-redux/actions/Cart";
@@ -62,6 +64,23 @@ const CartScreen = (props) => {
       />
     </View>
   );
+};
+
+CartScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Cart Items",
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
+        <Item
+          title="Cart"
+          iconName="ios-home"
+          onPress={() => {
+            navData.navigation.navigate("ProductOverview");
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
