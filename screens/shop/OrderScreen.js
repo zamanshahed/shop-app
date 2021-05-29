@@ -17,6 +17,7 @@ const OrderScreen = (props) => {
         <OrderItem
           orderAmount={itemData.item.orderTotalAmount}
           orderDate={itemData.item.ReadableDate}
+          items={itemData.item.orderItems}
         />
       )}
     />
