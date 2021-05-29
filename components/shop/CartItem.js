@@ -8,7 +8,9 @@ const CartItem = (props) => {
   return (
     <View style={styles.cartItem}>
       <View style={styles.summeryData}>
-        <Text style={styles.titleText}>{props.title}</Text>
+        <Text style={styles.titleText} numberOfLines={1}>
+          {props.title}
+        </Text>
 
         <Text style={styles.qtyText}>({props.quantity})</Text>
       </View>
@@ -16,7 +18,7 @@ const CartItem = (props) => {
         <Text style={styles.priceText}>$ {props.price.toFixed(2)}</Text>
         {props.deleteable && (
           <TouchableOpacity onPress={props.onDelete} style={styles.deleteBtn}>
-            <Ionicons name="ios-trash" size={25} color="red" />
+            <Ionicons name="ios-trash" size={25} color={Colors.btnPrimary} />
           </TouchableOpacity>
         )}
       </View>
@@ -26,10 +28,12 @@ const CartItem = (props) => {
 
 const styles = StyleSheet.create({
   cartItem: {
+    // width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 11,
-    margin: 11,
+    justifyContent: "space-around",
+    paddingVertical: 11,
+    paddingHorizontal: 20,
+    marginVertical: 11,
     borderRadius: 11,
     alignItems: "center",
     backgroundColor: Colors.theme,
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: Colors.btnPrimary,
     fontWeight: "bold",
-    marginLeft: 12,
+    // marginLeft: 12,
     textAlign: "center",
     color: "#fff",
   },
@@ -56,6 +60,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     color: "#fff",
+    width: "75%",
   },
   priceText: {
     fontSize: 18,
@@ -63,7 +68,8 @@ const styles = StyleSheet.create({
     color: Colors.price,
   },
   deleteBtn: {
-    marginLeft: 11,
+    // marginLeft: 11,
+    paddingHorizontal: 3,
   },
 });
 

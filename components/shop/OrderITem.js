@@ -6,6 +6,15 @@ import Colors from "../../constants/Colors";
 
 const OrderItem = (props) => {
   const [showDetails, setShowDetails] = useState(false);
+  let btnTitle = "Show Details";
+  let btnColor = Colors.btnSecondary;
+  if (showDetails) {
+    btnTitle = "Hide Details";
+    btnColor = Colors.btnPrimary;
+  } else {
+    btnTitle = "Show Details";
+    btnColor = Colors.btnSecondary;
+  }
 
   return (
     <View style={styles.screen}>
@@ -16,17 +25,18 @@ const OrderItem = (props) => {
       </View>
       <View style={styles.btnContainer}>
         <Button
-          color={Colors.btnSecondary}
-          title="Order Details"
+          color={btnColor}
+          title={btnTitle}
           onPress={() => {
             setShowDetails((prevState) => !prevState);
           }}
         />
       </View>
       {showDetails && (
-        <View>
+        <View style={styles.cartItemList}>
           {props.items.map((cartItem) => (
             <CartItem
+              key={cartItem.productId}
               quantity={cartItem.quantity}
               title={cartItem.productTitle}
               price={cartItem.totalPrice}
@@ -69,6 +79,9 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     paddingHorizontal: 5,
+  },
+  cartItemList: {
+    width: "100%",
   },
 });
 
