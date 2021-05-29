@@ -8,9 +8,9 @@ class Order {
   get ReadableDate() {
     // convert into readble date
     return this.orderDate.toLocaleDateString("en-EN", {
-      year: "nummeric",
+      year: "numeric",
       month: "long",
-      day: "nummeric",
+      day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
     });
