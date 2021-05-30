@@ -14,24 +14,7 @@ const ProductItems = (props) => {
         >
           <Text style={styles.titleText}>{props.title}</Text>
         </ImageBackground>
-        <View style={styles.productContainer}>
-          <View style={styles.btnStyle}>
-            <Button
-              color={Colors.btnPrimary}
-              title="Details"
-              onPress={props.onViewDetails}
-            />
-          </View>
-          <Text style={styles.priceTag}>$ {props.price.toFixed(2)}</Text>
-          {/* toFixed(2): for 2 decimal places */}
-          <View style={styles.btnStyle}>
-            <Button
-              color={Colors.btnSecondary}
-              title="To Cart"
-              onPress={props.onAddToCart}
-            />
-          </View>
-        </View>
+        <View style={styles.productContainer}>{props.children}</View>
       </Card>
     </View>
   );
