@@ -1,8 +1,10 @@
 import React from "react";
 import { FlatList } from "react-native";
 import { useSelector } from "react-redux";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import PorductItem from "../../components/shop/ProductItems";
+import MyHeaderButton from "../../components/UI/MyHeaderButton";
 
 const UserProductScreen = (props) => {
   const userProducts = useSelector(
@@ -24,6 +26,34 @@ const UserProductScreen = (props) => {
       )}
     />
   );
+};
+
+UserProductScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Your Products",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
+        <Item
+          title="Cart"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
+        <Item
+          title="Cart"
+          iconName="md-cart"
+          onPress={() => {
+            navData.navigation.navigate("Cart");
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default UserProductScreen;
