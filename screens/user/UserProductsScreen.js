@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
+import * as productActions from "../../store-redux/actions/products";
 import PorductItem from "../../components/shop/ProductItems";
 import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
@@ -19,6 +20,8 @@ const UserProductScreen = (props) => {
   const userProducts = useSelector(
     (state) => state.products.userCreatedProducts
   );
+
+  const dispatch = useDispatch();
 
   return (
     <FlatList
@@ -36,9 +39,7 @@ const UserProductScreen = (props) => {
             <Button
               color={Colors.btnSecondary}
               title="Edit item"
-              onPress={() =>
-                productDetailsHandler(itemData.item.id, itemData.item.title)
-              }
+              onPress={() => {}}
             />
           </View>
           <Text style={styles.priceTag}>
@@ -48,9 +49,9 @@ const UserProductScreen = (props) => {
           <View style={styles.btnStyle}>
             <Button
               color={Colors.btnPrimary}
-              title="remove item"
+              title="delete item"
               onPress={() => {
-                dispatch(cartActions.addToCart(itemData.item));
+                dispatch(productActions.DeleteProduct(itemData.item.id));
               }}
             />
           </View>
