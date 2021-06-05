@@ -42,7 +42,7 @@ const UserProductScreen = (props) => {
             <Button
               color={Colors.btnSecondary}
               title="Edit item"
-              onPress={() => editSelectedProduct(itemData.item.id)}
+              onPress={() => editSelectedProduct()}
             />
           </View>
           <Text style={styles.priceTag}>
