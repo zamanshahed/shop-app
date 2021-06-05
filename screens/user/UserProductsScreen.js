@@ -42,7 +42,7 @@ const UserProductScreen = (props) => {
             <Button
               color={Colors.btnSecondary}
               title="Edit item"
-              onPress={() => editSelectedProduct()}
+              onPress={() => editSelectedProduct(itemData.item.id)}
             />
           </View>
           <Text style={styles.priceTag}>
@@ -82,7 +82,7 @@ UserProductScreen.navigationOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={MyHeaderButton}>
         <Item
           title="Add"
-          iconName="md-create"
+          iconName="ios-create"
           onPress={() => {
             navData.navigation.navigate("EditProduct");
           }}
