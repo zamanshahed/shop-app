@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -17,6 +17,14 @@ const EditProductScreen = (props) => {
   const [imageUrl, setImageUrl] = useState(editedProduct ? editedProduct.imageUrl : '');
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState(editedProduct ? editedProduct.description : '');
+
+  const submitHandler = useCallback(() =>{ //ensures function re-created every time component renders, to avoid infinite loops
+    console.log("Submit Executed !!");
+  }, []);
+
+  useEffect(()=>{
+    props.navigation.setParams({'submit': submitHandler})
+  }, [submitHandler])
 
   return (
     <ScrollView>
@@ -42,6 +50,9 @@ const EditProductScreen = (props) => {
 };
 
 EditProductScreen.navigationOptions = (navData) => {
+
+  const submitFn = navData.navigation.getParam('submit');
+
   return {
     headerTitle: navData.navigation.getParam("productId")
       ? "Edit Product Mode"
@@ -51,9 +62,7 @@ EditProductScreen.navigationOptions = (navData) => {
         <Item
           title="Save"
           iconName="ios-checkmark"
-          onPress={() => {
-            navData.navigation.navigate("EditProduct");
-          }}
+          onPress={submitFn}
         />
       </HeaderButtons>
     ),
