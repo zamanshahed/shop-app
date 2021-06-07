@@ -2,10 +2,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
+import * as productActions from '../../store-redux/actions/products';
 
 const EditProductScreen = (props) => {
 
@@ -13,14 +14,21 @@ const EditProductScreen = (props) => {
 
   const editedProduct = useSelector(state=>state.products.userCreatedProducts.find(prod=>prod.id===prodId));
 
+  const dispatch = useDispatch()
+
   const [title, setTitle] = useState(editedProduct ? editedProduct.title : '');
   const [imageUrl, setImageUrl] = useState(editedProduct ? editedProduct.imageUrl : '');
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState(editedProduct ? editedProduct.description : '');
 
   const submitHandler = useCallback(() =>{ //ensures function re-created every time component renders, to avoid infinite loops
-    console.log("Submit Executed !!");
-  }, []);
+    // console.log("Submit Executed !!");
+    if(editedProduct){
+      dispatch(productActions.updateProduct(prodId, title, description, imageUrl))
+    }else{
+      dispatch(productActions.createProduct(title, description, imageUrl, +price))
+    }
+  }, [dispatch, prodId, title, description, imageUrl, price]);
 
   useEffect(()=>{
     props.navigation.setParams({'submit': submitHandler})
