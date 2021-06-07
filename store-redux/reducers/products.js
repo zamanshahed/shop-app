@@ -19,8 +19,10 @@ export default (state = initialState, action) => {
         userCreatedProducts: state.userCreatedProducts.concat(newProduct),
       };
     case UPDATE_PRODUCT:
-      const productIndex = state.userCreatedProducts.findIndex(prod=> prod.id === action.pid);
-      const updateProduct = new Product(
+      const productIndex = state.userCreatedProducts.findIndex(
+        prod => prod.id === action.pid
+      );
+      const updatedProduct = new Product(
         action.pid, 
         state.userCreatedProducts[productIndex].ownerId, 
         action.productData.title, action.productData.imageUrl, 
@@ -28,10 +30,10 @@ export default (state = initialState, action) => {
         state.userCreatedProducts[productIndex].price
         );
       const updatedUserProduct = [...state.userCreatedProducts];
-      updatedUserProduct[productIndex] = updateProduct;
+      updatedUserProduct[productIndex] = updatedProduct;
       const availableProductIndex = state.availableProducts.findIndex(prod=> prod.id === action.pid);
       const updatedAvailableProducts = [...state.availableProducts];
-      updatedAvailableProducts[availableProductIndex] = updateProduct; //updating both availableProducts and userCreatedProducts    
+      updatedAvailableProducts[availableProductIndex] = updatedProduct; //updating both availableProducts and userCreatedProducts    
       return {
         ...state,
         availableProducts: updatedAvailableProducts,

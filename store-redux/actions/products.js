@@ -6,7 +6,7 @@ export const DeleteProduct = (prodId) => {
   return { type: DELETE_PRODUCT, pid: prodId };
 };
 
-export const createProduct = (title, imageUrl, description, price) =>{
+export const createProduct = (title, description, imageUrl, price) =>{
   return {type:CREATE_PRODUCT, productData:{
    title:title,
    description: description,
@@ -15,12 +15,14 @@ export const createProduct = (title, imageUrl, description, price) =>{
   }};
 };
 
-export const updateProduct =  (id, title, imageUrl, description) =>{
-  return {type:UPDATE_PRODUCT, productData:{
-    pid: id,
+export const updateProduct =  (id, title, description, imageUrl) =>{
+  return {
+    type:UPDATE_PRODUCT, 
+    pid: id,  
+    productData:{
     title:title,
     description: description,
     mageUrl: imageUrl,
-    // price:price 
-  }};
+    },
+  };
 };
