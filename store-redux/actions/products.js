@@ -22,7 +22,7 @@ export const updateProduct =  (id, title, description, imageUrl) =>{
     productData:{
     title:title,
     description: description,
-    mageUrl: imageUrl,
+    imageUrl: imageUrl,
     },
   };
 };
