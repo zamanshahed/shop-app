@@ -21,6 +21,7 @@ const EditProductScreen = (props) => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState(editedProduct ? editedProduct.description : '');
 
+
   const submitHandler = useCallback(() =>{ //ensures function re-created every time component renders, to avoid infinite loops
     // console.log("Submit Executed !!");
     if(editedProduct){

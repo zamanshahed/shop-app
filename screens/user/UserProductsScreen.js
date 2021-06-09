@@ -6,6 +6,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Alert
 } from "react-native";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -25,6 +26,14 @@ const UserProductScreen = (props) => {
   };
 
   const dispatch = useDispatch();
+
+
+  const deleteHandler = (id) =>{
+    Alert.alert('Are you sure?', 'Do you really want to delete this item?', [
+        {text: 'No', style: 'default'},
+        {tpext: 'Yes', style: 'destructive', onPress: ()=> {dispatch(productActions.DeleteProduct(id))}}
+      ])
+  }
 
   return (
     <FlatList
@@ -53,9 +62,7 @@ const UserProductScreen = (props) => {
             <Button
               color={Colors.btnPrimary}
               title="delete item"
-              onPress={() => {
-                dispatch(productActions.DeleteProduct(itemData.item.id));
-              }}
+              onPress={deleteHandler.bind(this, itemData.item.id)}
             />
           </View>
         </PorductItem>
