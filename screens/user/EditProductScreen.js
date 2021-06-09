@@ -40,16 +40,16 @@ const EditProductScreen = (props) => {
     <ScrollView>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Title</Text>
-        <TextInput style={styles.inputStyle} value={title} onChangeText={text => setTitle(text)} />
+        <TextInput keyboardType='default' style={styles.inputStyle} value={title} onChangeText={text => setTitle(text)} />
       </View>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Image Url</Text>
-        <TextInput style={styles.inputStyle} value={imageUrl} onChangeText={text => setImageUrl(text)} />
+        <TextInput keyboardType='default' style={styles.inputStyle} value={imageUrl} onChangeText={text => setImageUrl(text)} />
       </View>
       {editedProduct ? null : (
         <View style={styles.formStyle}>
           <Text style={styles.labelStyle}>Edit Price</Text>
-          <TextInput style={styles.inputStyle} value={price} onChangeText={text => setPrice(text)} />
+          <TextInput keyboardType='decimal-pad' style={styles.inputStyle} value={price} onChangeText={text => setPrice(text)} />
         </View>)}
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Desription</Text>
