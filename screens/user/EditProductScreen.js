@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,6 +17,7 @@ const EditProductScreen = (props) => {
   const dispatch = useDispatch()
 
   const [title, setTitle] = useState(editedProduct ? editedProduct.title : '');
+  const [titleIsValid, setTitleIsValid] = useState(false);
   const [imageUrl, setImageUrl] = useState(editedProduct ? editedProduct.imageUrl : '');
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState(editedProduct ? editedProduct.description : '');
@@ -24,6 +25,13 @@ const EditProductScreen = (props) => {
 
   const submitHandler = useCallback(() =>{ //ensures function re-created every time component renders, to avoid infinite loops
     // console.log("Submit Executed !!");
+
+    //cancel function execution for validity
+    if(!titleIsValid){
+      Alert.alert('Wrong input!', 'Enter a valid title and try again.', [{text: 'Ok'}])
+      return;
+    }
+
     if(editedProduct){
       dispatch(productActions.updateProduct(prodId, title, description, imageUrl))
     }else{
@@ -36,11 +44,21 @@ const EditProductScreen = (props) => {
     props.navigation.setParams({'submit': submitHandler})
   }, [submitHandler])
 
+  const changeTitleHandler = text =>{
+    if(text.trim().length === 0){
+      setTitleIsValid(false);
+    }else{
+      setTitleIsValid(true)
+    }
+    setTitle(text)
+  }
+
   return (
     <ScrollView>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Title</Text>
-        <TextInput keyboardType='default' style={styles.inputStyle} value={title} onChangeText={text => setTitle(text)} />
+        <TextInput keyboardType='default' style={styles.inputStyle} value={title} onChangeText={changeTitleHandler} />
+        {!titleIsValid && <Text>Please enter a valid title !</Text>}
       </View>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Image Url</Text>
