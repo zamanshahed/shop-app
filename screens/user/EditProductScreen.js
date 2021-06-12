@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import { View, Text, TextInput, StyleSheet, Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -8,6 +8,12 @@ import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
 import * as productActions from '../../store-redux/actions/products';
 
+const REDUCER_UPDATE = 'UPDATE';
+
+const formReducer = (state, action) =>{
+  if(action.type === 'UPDATE')
+};
+
 const EditProductScreen = (props) => {
 
   const prodId = props.navigation.getParam("productId");
@@ -15,6 +21,19 @@ const EditProductScreen = (props) => {
   const editedProduct = useSelector(state=>state.products.userCreatedProducts.find(prod=>prod.id===prodId));
 
   const dispatch = useDispatch()
+
+  useReducer(formReducer, {
+    inputValues:{
+      title: editedProduct ? editedProduct.title : '',
+      imageUrl: editedProduct ? editedProduct.imageUrl : '',
+      description: editedProduct ? editedProduct.description : '',
+      price: ''
+    }, 
+    inputValidities:{
+      title: editedProduct ? true : false,
+    }, 
+    formIsValid: false
+})
 
   const [title, setTitle] = useState(editedProduct ? editedProduct.title : '');
   const [titleIsValid, setTitleIsValid] = useState(false);
@@ -38,7 +57,7 @@ const EditProductScreen = (props) => {
       dispatch(productActions.createProduct(title, description, imageUrl, +price))
     }
     props.navigation.goBack();
-  }, [dispatch, prodId, title, description, imageUrl, price]);
+  }, [dispatch, prodId, title, description, imageUrl, price, titleIsValid]);
 
   useEffect(()=>{
     props.navigation.setParams({'submit': submitHandler})
