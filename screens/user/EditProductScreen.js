@@ -8,7 +8,7 @@ import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
 import * as productActions from '../../store-redux/actions/products';
 
-const REDUCER_UPDATE = 'UPDATE';
+const FORM_UPDATE = 'UPDATE';
 
 const formReducer = (state, action) =>{
   if(action.type === 'UPDATE')
@@ -22,7 +22,7 @@ const EditProductScreen = (props) => {
 
   const dispatch = useDispatch()
 
-  useReducer(formReducer, {
+  const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues:{
       title: editedProduct ? editedProduct.title : '',
       imageUrl: editedProduct ? editedProduct.imageUrl : '',
@@ -31,8 +31,11 @@ const EditProductScreen = (props) => {
     }, 
     inputValidities:{
       title: editedProduct ? true : false,
+      imageUrl: editedProduct ? true : false,
+      description: editedProduct ? true : false,
+      price: editedProduct ? true : false,
     }, 
-    formIsValid: false
+    formIsValid: editedProduct ? true : false
 })
 
   const [title, setTitle] = useState(editedProduct ? editedProduct.title : '');
@@ -64,12 +67,11 @@ const EditProductScreen = (props) => {
   }, [submitHandler])
 
   const changeTitleHandler = text =>{
-    if(text.trim().length === 0){
-      setTitleIsValid(false);
-    }else{
-      setTitleIsValid(true)
+    let isValid = false;
+    if(text.trim().length > 0){
+      isValid=true;
     }
-    setTitle(text)
+    dispatchFormState({type:FORM_UPDATE, value: text, isValid: isValid, input: 'title'})
   }
 
   return (
