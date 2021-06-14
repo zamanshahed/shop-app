@@ -11,7 +11,29 @@ import * as productActions from '../../store-redux/actions/products';
 const FORM_UPDATE = 'UPDATE';
 
 const formReducer = (state, action) =>{
-  if(action.type === 'UPDATE')
+  if(action.type === 'UPDATE'){
+    const updatedValues = {
+      ...state.inputValues,
+      [action.input]: action.value
+    };
+
+    const updatedValidites = {
+      ...state.inputValidities,
+      [action.input]: action.isValid
+    }
+
+    let updatedFormIsValid = true;
+    for(const element in updatedValidites){
+      updatedFormIsValid = updatedFormIsValid && updatedValidites[element]; //if one input is invalid, full form is invalid !
+    }
+
+    return {
+      formIsValid: updatedFormIsValid,
+      inputValidities: updatedValidites,
+      inputValues: updatedValues,
+    };
+  }
+  return state; //if anything wrong, return unchanged state.
 };
 
 const EditProductScreen = (props) => {
@@ -49,50 +71,50 @@ const EditProductScreen = (props) => {
     // console.log("Submit Executed !!");
 
     //cancel function execution for validity
-    if(!titleIsValid){
-      Alert.alert('Wrong input!', 'Enter a valid title and try again.', [{text: 'Ok'}])
+    if(!formState.formIsValid){
+      Alert.alert('Wrong input!', 'Check your inputs and try again.', [{text: 'Ok'}])
       return;
     }
 
     if(editedProduct){
-      dispatch(productActions.updateProduct(prodId, title, description, imageUrl))
+      dispatch(productActions.updateProduct(prodId, formState.inputValues.title, formState.inputValues.description, formState.inputValues.imageUrl))
     }else{
-      dispatch(productActions.createProduct(title, description, imageUrl, +price))
+      dispatch(productActions.createProduct(formState.inputValues.title, formState.inputValues.description, formState.inputValues.imageUrl, +formState.inputValues.price))
     }
     props.navigation.goBack();
-  }, [dispatch, prodId, title, description, imageUrl, price, titleIsValid]);
+  }, [dispatch, prodId, formState]);
 
   useEffect(()=>{
     props.navigation.setParams({'submit': submitHandler})
   }, [submitHandler])
 
-  const changeTitleHandler = text =>{
+  const changeTextHandler = (inputIdentifier, text) =>{
     let isValid = false;
     if(text.trim().length > 0){
       isValid=true;
     }
-    dispatchFormState({type:FORM_UPDATE, value: text, isValid: isValid, input: 'title'})
+    dispatchFormState({type:FORM_UPDATE, value: text, isValid: isValid, input: inputIdentifier})
   }
 
   return (
     <ScrollView>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Title</Text>
-        <TextInput keyboardType='default' style={styles.inputStyle} value={title} onChangeText={changeTitleHandler} />
-        {!titleIsValid && <Text>Please enter a valid title !</Text>}
+        <TextInput keyboardType='default' style={styles.inputStyle} value={formState.inputValues.title} onChangeText={changeTextHandler.bind(this, 'title')} />
+        {!formState.inputValidities && <Text>Please enter a valid title !</Text>}
       </View>
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Image Url</Text>
-        <TextInput keyboardType='default' style={styles.inputStyle} value={imageUrl} onChangeText={text => setImageUrl(text)} />
+        <TextInput keyboardType='default' style={styles.inputStyle} value={formState.inputValues.imageUrl} onChangeText={changeTextHandler.bind(this, 'imageUrl')} />
       </View>
       {editedProduct ? null : (
         <View style={styles.formStyle}>
           <Text style={styles.labelStyle}>Edit Price</Text>
-          <TextInput keyboardType='decimal-pad' style={styles.inputStyle} value={price} onChangeText={text => setPrice(text)} />
+          <TextInput keyboardType='decimal-pad' style={styles.inputStyle} value={formState.inputValues.price} onChangeText={changeTextHandler.bind(this, 'price')} />
         </View>)}
       <View style={styles.formStyle}>
         <Text style={styles.labelStyle}>Edit Desription</Text>
-        <TextInput style={styles.inputStyle} value={description} onChangeText={text => setDescription(text)} />
+        <TextInput style={styles.inputStyle} value={formState.inputValues.description} onChangeText={changeTextHandler.bind(this, 'description')} />
       </View>
     </ScrollView>
   );
