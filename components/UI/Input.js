@@ -77,7 +77,9 @@ const Input = (props) => {
         onBlur={lostInputFocusHandler}
       />
       {!inputState.isValid && inputState.touched && (
-        <Text>{props.errorText}</Text>
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorStyleText}>{props.errorText}</Text>
+        </View>
       )}
     </View>
   );
@@ -85,18 +87,30 @@ const Input = (props) => {
 
 const styles = StyleSheet.create({
   formStyle: {
-    paddingVertical: 11,
+    paddingBottom: 12,
   },
   inputStyle: {
-    borderBottomWidth: 4,
+    borderBottomWidth: 2,
     borderColor: Colors.theme,
-    borderRadius: 300,
+    borderRadius: 15,
     fontSize: 16,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
   },
   labelStyle: {
     fontWeight: "bold",
     fontSize: 18,
+  },
+  errorContainer: {
+    alignItems: "center",
+    padding: 2,
+  },
+  errorStyleText: {
+    color: Colors.price,
+    fontSize: 15,
+    backgroundColor: Colors.btnPrimary,
+    paddingVertical: 2,
+    paddingHorizontal: 5,
+    borderRadius: 3,
   },
 });
 
