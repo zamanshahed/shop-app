@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import AppLoading from "expo-app-loading";
 import {
@@ -8,6 +8,7 @@ import {
   Comfortaa_400Regular,
   Aldrich_400Regular,
 } from "@expo-google-fonts/dev";
+import ReduxThunk from "redux-thunk";
 
 import productReducer from "./store-redux/reducers/products";
 import ShopNavigator from "./navigation/ShopNavigator";
@@ -20,7 +21,7 @@ const roodReducer = combineReducers({
   orders: orderReducer,
 });
 
-const storeRedux = createStore(roodReducer);
+const storeRedux = createStore(roodReducer, applyMiddleware(ReduxThunk));
 
 export default function App() {
   let [fontsLoaded] = useFonts({
