@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FlatList,
   Button,
@@ -6,6 +6,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -17,11 +18,17 @@ import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import Colors from "../../constants/Colors";
 
 const ProductOverviewScreen = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const products = useSelector((state) => state.products.availableProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(productActions.fetchProducts());
+    const loadingProducts = async () => {
+      setIsLoading(true);
+      await dispatch(productActions.fetchProducts());
+      setIsLoading(false);
+    };
+    loadingProducts();
   }, [dispatch]);
 
   const productDetailsHandler = (id, title) => {
@@ -30,6 +37,14 @@ const ProductOverviewScreen = (props) => {
       productTitle: title,
     });
   };
+
+  if (isLoading) {
+    return (
+      <View style={styles.centeredItem}>
+        <ActivityIndicator size="large" color={Colors.theme} />
+      </View>
+    );
+  }
 
   return (
     <FlatList
@@ -118,6 +133,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     fontFamily: "Aldrich_400Regular",
+  },
+  centeredItem: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
