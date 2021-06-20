@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   FlatList,
   Button,
@@ -19,17 +19,24 @@ import Colors from "../../constants/Colors";
 
 const ProductOverviewScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
   const products = useSelector((state) => state.products.availableProducts);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadingProducts = async () => {
-      setIsLoading(true);
+  const loadingProducts = useCallback(async () => {
+    setError(null);
+    setIsLoading(true);
+    try {
       await dispatch(productActions.fetchProducts());
-      setIsLoading(false);
-    };
+    } catch (err) {
+      setError(err.message);
+    }
+    setIsLoading(false);
+  }, [dispatch, setIsLoading, setError]);
+
+  useEffect(() => {
     loadingProducts();
-  }, [dispatch]);
+  }, [dispatch, loadingProducts]);
 
   const productDetailsHandler = (id, title) => {
     props.navigation.navigate("ProductDetail", {
@@ -38,10 +45,35 @@ const ProductOverviewScreen = (props) => {
     });
   };
 
+  if (error) {
+    return (
+      <View style={styles.centeredItem}>
+        <Text style={{ fontSize: 21, color: Colors.theme, fontWeight: "bold" }}>
+          An Error Occurred !
+        </Text>
+        <Button
+          title="Try Again"
+          onPress={loadingProducts}
+          color={Colors.theme}
+        />
+      </View>
+    );
+  }
+
   if (isLoading) {
     return (
       <View style={styles.centeredItem}>
         <ActivityIndicator size="large" color={Colors.theme} />
+      </View>
+    );
+  }
+
+  if (!isLoading && products.length === 0) {
+    return (
+      <View style={styles.centeredItem}>
+        <Text style={{ fontSize: 21, color: Colors.theme, fontWeight: "bold" }}>
+          No Products Found !
+        </Text>
       </View>
     );
   }

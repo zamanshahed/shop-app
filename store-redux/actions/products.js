@@ -9,31 +9,38 @@ export const fetchProducts = () => {
   return async (dispatch) => {
     //with async it returns promise !!
     //going for async data fetch with http requests !
-    const response = await fetch(
-      "https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products.json",
-      {
-        method: "GET",
-      }
-    );
-
-    const resData = await response.json(); //async task
-    // console.log(resData);
-    const loadedProducts = [];
-
-    for (const key in resData) {
-      loadedProducts.push(
-        new Product(
-          key,
-          "u1",
-          resData[key].title,
-          resData[key].imageUrl,
-          resData[key].description,
-          resData[key].price
-        )
+    try {
+      const response = await fetch(
+        "https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/productsjson"
       );
-    }
 
-    dispatch({ type: SET_PRODUCT, products: loadedProducts });
+      if (!response.ok) {
+        throw new Error("Server Response Error: Something went wrong!");
+      }
+
+      const resData = await response.json(); //async task
+      // console.log(resData);
+      const loadedProducts = [];
+
+      for (const key in resData) {
+        loadedProducts.push(
+          new Product(
+            key,
+            "u1",
+            resData[key].title,
+            resData[key].imageUrl,
+            resData[key].description,
+            resData[key].price
+          )
+        );
+      }
+
+      dispatch({ type: SET_PRODUCT, products: loadedProducts });
+    } catch (err) {
+      //send it to some custom analytic server (later)
+      throw err;
+      console.log(err);
+    }
   };
 };
 
