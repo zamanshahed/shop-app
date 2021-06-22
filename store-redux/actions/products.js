@@ -11,7 +11,7 @@ export const fetchProducts = () => {
     //going for async data fetch with http requests !
     try {
       const response = await fetch(
-        "https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/productsjson"
+        "https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products.json"
       );
 
       if (!response.ok) {
