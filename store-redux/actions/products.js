@@ -87,13 +87,34 @@ export const createProduct = (title, description, imageUrl, price) => {
 };
 
 export const updateProduct = (id, title, description, imageUrl) => {
-  return {
-    type: UPDATE_PRODUCT,
-    pid: id,
-    productData: {
-      title: title,
-      description: description,
-      imageUrl: imageUrl,
-    },
+  // to fetch data from firebase
+  return async (dispatch) => {
+    //relation with firebase
+    await fetch(
+      `https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products/${id}.json`,
+      {
+        method: "PATCH", //updates the data, but PUT replaces the data
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          // firebase itself will generate id for us
+          title,
+          description,
+          imageUrl,
+          // price,
+        }),
+      }
+    );
+
+    dispatch({
+      type: UPDATE_PRODUCT,
+      pid: id,
+      productData: {
+        title: title,
+        description: description,
+        imageUrl: imageUrl,
+      },
+    });
   };
 };
