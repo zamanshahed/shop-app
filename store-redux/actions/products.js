@@ -45,7 +45,17 @@ export const fetchProducts = () => {
 };
 
 export const DeleteProduct = (prodId) => {
-  return { type: DELETE_PRODUCT, pid: prodId };
+  //for deleting from firebase
+  return async (dispatch) => {
+    await fetch(
+      `https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products/${prodId}.json`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    dispatch({ type: DELETE_PRODUCT, pid: prodId });
+  };
 };
 
 export const createProduct = (title, description, imageUrl, price) => {
