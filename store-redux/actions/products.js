@@ -47,12 +47,16 @@ export const fetchProducts = () => {
 export const DeleteProduct = (prodId) => {
   //for deleting from firebase
   return async (dispatch) => {
-    await fetch(
+    const response = await fetch(
       `https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products/${prodId}.json`,
       {
         method: "DELETE",
       }
     );
+
+    if (!response.ok) {
+      throw new Error("something went wrong!");
+    }
 
     dispatch({ type: DELETE_PRODUCT, pid: prodId });
   };
@@ -100,7 +104,7 @@ export const updateProduct = (id, title, description, imageUrl) => {
   // to fetch data from firebase
   return async (dispatch) => {
     //relation with firebase
-    await fetch(
+    const response = await fetch(
       `https://rn-shop-app-40f1c-default-rtdb.firebaseio.com/products/${id}.json`,
       {
         method: "PATCH", //updates the data, but PUT replaces the data
@@ -116,6 +120,10 @@ export const updateProduct = (id, title, description, imageUrl) => {
         }),
       }
     );
+
+    if (!response.ok) {
+      throw new Error("something went wrong!");
+    }
 
     dispatch({
       type: UPDATE_PRODUCT,
