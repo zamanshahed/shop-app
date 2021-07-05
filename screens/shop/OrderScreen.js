@@ -1,13 +1,19 @@
-import React from "react";
-import { View, FlatList, StyleSheet, Text } from "react-native";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { FlatList } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import MyHeaderButton from "../../components/UI/MyHeaderButton";
 import OrderItem from "../../components/shop/OrderITem";
+import * as ordersActions from "../../store-redux/actions/Order";
 
 const OrderScreen = (props) => {
   const orders = useSelector((state) => state.orders.orders);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(ordersActions.fetchOrder());
+  }, [dispatch]);
 
   return (
     <FlatList
