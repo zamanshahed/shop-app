@@ -1,5 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList, Button } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Button,
+  ActivityIndicator,
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
@@ -10,6 +17,8 @@ import * as cartActions from "../../store-redux/actions/Cart";
 import * as orderActions from "../../store-redux/actions/Order";
 
 const CartScreen = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const cartTotalOrder = useSelector((state) => state.cart.totalPayment);
   const cartItems = useSelector((state) => {
     const transformedCartItems = [];
@@ -29,22 +38,35 @@ const CartScreen = (props) => {
 
   const dispatch = useDispatch();
 
+  const sendOrderHandler = async () => {
+    setIsLoading(true);
+    await dispatch(cartActions.removeFromCart(itemData.item.productId));
+    setIsLoading(false);
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.summery}>
         <Text style={styles.summeryText}>
           Total:{" "}
-          <Text style={styles.totalPayment}> ${Math.round(cartTotalOrder.toFixed(2) * 100)/100}</Text>
+          <Text style={styles.totalPayment}>
+            {" "}
+            ${Math.round(cartTotalOrder.toFixed(2) * 100) / 100}
+          </Text>
         </Text>
-        <Button
-          style={styles.btnStyle}
-          title="Confirm Order"
-          color={Colors.btnSecondary}
-          disabled={cartItems.length === 0}
-          onPress={() => {
-            dispatch(orderActions.addOrder(cartItems, cartTotalOrder));
-          }}
-        />
+        {isLoading ? (
+          <ActivityIndicator size="small" color={Colors.price} />
+        ) : (
+          <Button
+            style={styles.btnStyle}
+            title="Confirm Order"
+            color={Colors.btnSecondary}
+            disabled={cartItems.length === 0}
+            onPress={() => {
+              dispatch(orderActions.addOrder(cartItems, cartTotalOrder));
+            }}
+          />
+        )}
       </View>
 
       <FlatList
@@ -57,9 +79,7 @@ const CartScreen = (props) => {
             title={itemData.item.productTitle}
             price={itemData.item.totalPrice}
             deleteable
-            onDelete={() => {
-              dispatch(cartActions.removeFromCart(itemData.item.productId));
-            }}
+            onDelete={sendOrderHandler}
           />
         )}
       />
