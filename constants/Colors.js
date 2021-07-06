@@ -5,4 +5,5 @@ export default {
   accent: "#FFC107",
   price: "#ffeaa7",
   theme: "#4b6584",
+  blank: "#fff",
 };

@@ -91,9 +91,14 @@ const sideDrawerNav = createDrawerNavigator(
   }
 );
 
-const AuthNavigator = createStackNavigator({
-  Auth: AuthScreen,
-});
+const AuthNavigator = createStackNavigator(
+  {
+    Auth: AuthScreen,
+  },
+  {
+    defaultNavigationOptions: mainNavConfig,
+  }
+);
 
 const MasterNavigator = createSwitchNavigator({
   Auth: AuthNavigator,

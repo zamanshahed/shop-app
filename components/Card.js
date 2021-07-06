@@ -18,12 +18,14 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderRadius: 10,
     backgroundColor: Colors.theme,
+    marginVertical: 11,
+
+    // Shadow Style
     shadowColor: "black",
     shadowOpacity: 1,
     shadowOffset: { width: 12, height: 11 },
     shadowRadius: 15,
     elevation: 10,
-    marginVertical: 11,
   },
 });
 
