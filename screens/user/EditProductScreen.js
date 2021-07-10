@@ -136,10 +136,6 @@ const EditProductScreen = (props) => {
 
   const inputChangeHandler = useCallback(
     (inputIdentifier, inputValue, inputValidity) => {
-      // let isValid = false;
-      // if (text.trim().length > 0) {
-      //   isValid = true;
-      // }
       dispatchFormState({
         type: FORM_UPDATE,
         value: inputValue,

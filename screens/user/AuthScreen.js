@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useCallback } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -6,15 +6,80 @@ import {
   Button,
   KeyboardAvoidingView,
 } from "react-native";
+import { useDispatch } from "react-redux";
 
 import Input from "../../components/UI/Input";
 import Colors from "../../constants/Colors";
+import * as authActions from "../../store-redux/actions/Auth";
+
+const FORM_UPDATE = "FORM_UPDATE";
+
+const formReducer = (state, action) => {
+  if (action.type === FORM_UPDATE) {
+    const updatedValues = {
+      ...state.inputValues,
+      [action.input]: action.value,
+    };
+
+    const updatedValidites = {
+      ...state.inputValidities,
+      [action.input]: action.isValid,
+    };
+
+    let updatedFormIsValid = true;
+    for (const key in updatedValidites) {
+      updatedFormIsValid = updatedFormIsValid && updatedValidites[key]; //if one input is invalid, full form is invalid !
+    }
+
+    return {
+      formIsValid: updatedFormIsValid,
+      inputValidities: updatedValidites,
+      inputValues: updatedValues,
+    };
+  }
+  return state; //if anything wrong, return unchanged state.
+};
 
 const AuthScreen = (props) => {
+  const dispatch = useDispatch();
+
+  const [formState, dispatchFormState] = useReducer(formReducer, {
+    inputValues: {
+      email: "",
+      password: "",
+    },
+    inputValidities: {
+      email: false,
+      password: false,
+    },
+    formIsValid: false,
+  });
+
+  const signupHandler = () => {
+    dispatch(
+      authActions.signup(
+        formState.inputValues.email,
+        formState.inputValues.password
+      )
+    );
+  };
+
+  const inputChangeHandler = useCallback(
+    (inputIdentifier, inputValue, inputValidity) => {
+      dispatchFormState({
+        type: FORM_UPDATE,
+        value: inputValue,
+        isValid: inputValidity,
+        input: inputIdentifier,
+      });
+    },
+    [dispatchFormState]
+  );
+
   return (
     <KeyboardAvoidingView
-      behavior="padding"
-      keyboardVerticalOffset={75}
+      // behavior="padding"
+      // keyboardVerticalOffset={0}
       style={styles.screen}
     >
       <View style={styles.authContainer}>
@@ -28,6 +93,7 @@ const AuthScreen = (props) => {
             autoCapitalize="none"
             errorText="A Valid Email Please.."
             // onChangeText={() => {}}
+            onInputChange={inputChangeHandler}
             initialValue=""
           />
 
@@ -41,6 +107,7 @@ const AuthScreen = (props) => {
             autoCapitalize="none"
             errorText="A Valid Password (5 characters) Please.."
             // onChangeText={() => {}}
+            onInputChange={inputChangeHandler}
             initialValue=""
           />
           <View style={styles.btnContainer}>
@@ -48,7 +115,7 @@ const AuthScreen = (props) => {
               <Button
                 title="Login"
                 color={Colors.btnSecondary}
-                onPress={() => {}}
+                onPress={signupHandler}
               />
             </View>
             <View style={styles.btnStyle}>
